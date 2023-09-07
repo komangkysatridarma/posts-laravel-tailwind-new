@@ -7,16 +7,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link {{ ($active === "home") ? 'active' : '' }}" aria-current="page" href="/">Home</a>
+            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ ($active === "about") ? 'active' : '' }}" href="/about">About</a>
+            <a class="nav-link {{ Request::is('about') ? 'active' : '' }}" href="/about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ ($active === "blog") ? 'active' : '' }}" href="/posts">Blog</a>
+            <a class="nav-link {{ Request::is('posts') ? 'active' : '' }}" href="/posts">Blog</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ ($active === "categories") ? 'active' : '' }}" href="/categories">Categories</a>
+            <a class="nav-link {{ Request::is('categories') ? 'active' : '' }}" href="/categories">Categories</a>
           </li>
         </ul>
 
@@ -40,7 +40,7 @@
           </li>
           @else
           <li class="nav-item">
-            <a href="/login" class="nav-link {{ ($active === "login") ? 'active' : '' }}"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+            <a href="/login" class="nav-link {{ Request::is('login') ? 'active' : '' }}"><i class="bi bi-box-arrow-in-right"></i> Login</a>
           </li>
           @endauth
         </ul>
