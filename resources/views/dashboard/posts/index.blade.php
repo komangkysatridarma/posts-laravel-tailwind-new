@@ -7,7 +7,7 @@
   </div>
 
   @if(session()->has('success'))
-  <div class="alert alert-success" role="alert">
+  <div class="alert alert-success col-lg-8" role="alert">
     {{ session('success') }}
   </div>
   @endif
@@ -34,7 +34,11 @@
           <td>
             <a href="/dashboard/posts/{{ $post->slug }}"><svg class="bi"><use xlink:href="#eye"/></svg></a>
             <a href="{{ $post->id }}"><svg class="bi"><use xlink:href="#pencil"/></svg></a>
-            <a href="{{ $post->id }}"><svg class="bi"><use xlink:href="#trash"/></svg></a>
+            <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+              @method('delete')
+              @csrf
+              <button name="submit" class="border-0 p-0" onclick="return confirm('Are You Sure?')"><a href="{{ $post->id }}"><svg class="bi"><use xlink:href="#trash"/></svg></a></button>
+            </form>
           </td>
         </tr>
         @endforeach
