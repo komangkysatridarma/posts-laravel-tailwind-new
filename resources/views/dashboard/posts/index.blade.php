@@ -33,7 +33,7 @@
           <td>{{ $post->category->name }}</td>
           <td>
             <a href="/dashboard/posts/{{ $post->slug }}"><svg class="bi"><use xlink:href="#eye"/></svg></a>
-            <a href="{{ $post->id }}"><svg class="bi"><use xlink:href="#pencil"/></svg></a>
+            <a href="/dashboard/posts/{{ $post->slug }}/edit"><svg class="bi"><use xlink:href="#pencil"/></svg></a>
             <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
               @method('delete')
               @csrf

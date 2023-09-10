@@ -9,7 +9,7 @@
                 <a href="/dashboard/posts" class="btn btn-success">
                     <svg class="bi"><use xlink:href="#left"/></svg>
                     Back to all my post</a>
-                <a href="" class="btn btn-warning text-white">
+                <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning text-white">
                     <svg class="bi"><use xlink:href="#pencil"/></svg>
                     Edit</a>
                     <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
