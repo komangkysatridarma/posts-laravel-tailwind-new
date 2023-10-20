@@ -19,10 +19,10 @@ class DatabaseSeeder extends Seeder
         User::factory(4)->create();
 
         User::create([
-            'name'=> 'Komang Kysa',
-            'username'=> 'Komang',
-            'email'=> 'komangkeyza@gmail.com',
-            'password'=> bcrypt('123')
+            'name'=> 'Komang Kysa Tri Darma',
+            'username'=> 'Komangg',
+            'email'=> 'komangkeyza17@gmail.com',
+            'password'=> bcrypt('komang')
         ]);
         // User::create([
         //     'name'=> 'Sen',
@@ -32,15 +32,33 @@ class DatabaseSeeder extends Seeder
 
         Category::create([
             'name'=>'Programming',
-            'slug'=>'web-programming'
+            'slug'=>'web-programming',
+            'deskripsi'=>'Programming merupakan proses pembuatan aplikasi yang di dalamnya melibatkan berbagai jenis tugas, mulai dari mendesain program, mengimplementasikan struktur data dan algoritma, melakukan analisis, coding, testing, hingga debugging. Artinya, coding merupakan salah satu bagian dari programming.',
         ]);
         Category::create([
             'name'=>'Personal',
-            'slug'=>'personal'
+            'slug'=>'personal',
+            'deskripsi'=> 'Personal adalah sebuah istilah yang merujuk kepada hal-hal yang terkait dengan diri seseorang secara individual. Hal ini mencakup kepribadian, nilai-nilai, pengalaman hidup, keinginan, tujuan, dan segala sesuatu yang menjelaskan identitas unik seseorang.'
         ]);
         Category::create([
             'name'=>'Web Design',
-            'slug'=>'web-design'
+            'slug'=>'web-design',
+            'deskripsi'=> 'Desain web adalah proses merencanakan, menciptakan, dan mengatur konten yang ditampilkan di sebuah situs web. Hal ini melibatkan berbagai aspek termasuk tata letak, warna, grafis, teks, jenis huruf, gambar, dan interaksi pengguna untuk menciptakan antarmuka web yang menarik dan efektif.'
+        ]);
+        Category::create([
+            'name'=>'Kesehatan',
+            'slug'=>'kesehatan',
+            'deskripsi'=> 'Kesehatan adalah kondisi optimal dari tubuh, pikiran, dan sosial yang memungkinkan individu untuk berfungsi dengan baik dalam kehidupan sehari-hari. Ini mencakup berbagai aspek seperti fisik, mental, emosional, sosial, dan lingkungan.'
+        ]);
+        Category::create([
+            'name'=>'Makanan',
+            'slug'=>'makanan',
+            'deskripsi'=> 'Makanan adalah substansi yang dikonsumsi oleh organisme untuk memenuhi kebutuhan gizi dan energi. Ini adalah sumber nutrisi yang memberikan bahan-bahan yang diperlukan untuk pertumbuhan, perkembangan, dan fungsi normal tubuh. Makanan bisa berasal dari berbagai jenis dan memiliki beragam manfaat bagi kesehatan manusia.'
+        ]);
+        Category::create([
+            'name'=>'Olahraga',
+            'slug'=>'olahraga',
+            'deskripsi'=> 'Olahraga adalah aktivitas fisik terencana dan terstruktur yang dilakukan untuk meningkatkan kebugaran fisik, kesehatan, dan kinerja fisik. Ini mencakup berbagai jenis aktivitas yang membangun kekuatan, daya tahan, kelincahan, fleksibilitas, dan koordinasi. Olahraga tidak hanya memberikan manfaat fisik, tetapi juga manfaat mental dan sosial. '
         ]);
 
         Post::factory(20)->create();

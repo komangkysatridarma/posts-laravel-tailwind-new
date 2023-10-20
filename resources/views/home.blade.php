@@ -1,21 +1,21 @@
 @extends('layouts.main')
 
 @section('container')
-<div class="container mx-auto bg-gray-800 flex justify-start items-start flex-wrap mt-4">
-    <div class="flex flex-col items-center my-auto">
-      <div class="max-w-full h-auto shadow-lg overflow-hidden">
-        <img class="max-w-full h-auto" src="/img/reading_a_book4-removebg-preview.png" alt="">
-      </div>
-        <div class="w-48 flex items-start mb-2">
-            <div class="flex flex-shrink-0 justify-center">
-                <h1 class="text-white lg:text-3xl sm:text-xl">Reading Is Fun!</h1>
-            </div>
+<div class="container mx-auto bg-gray-800 flex flex-col lg:flex-row items-center mt-4">
+    <div class="lg:w-1/2 lg:pr-4 flex justify-center">
+        <div class="max-w-sm h-auto">
+            <img class="w-full h-auto" src="/img/Free_Vector___People_reading_books_for_study_vector_illustration-removebg-preview.png" alt="">
         </div>
-            <div class="flex lg:w-1/2 sm:w-60 md:w-96 lg:text-xl sm:text-xs md:text-sm">
-              <span class="text-white">Manfaat blogging yang pertama adalah menyalurkan kreativitas yang dimiliki, 
-                  sekaligus menciptakan online presence di dunia yang serba digital ini. Blog bisa jadi sarana untukmu 
-                  menuangkan isi pikiran dan mencoba menulis tentang berbagai macam topik.</span>
-              </div>
-            </div>
-  </div>
+    </div>
+    <div class="lg:w-1/2 flex items-center lg:mr-24 md:w-1/2">
+        <div>
+            <h1 class="text-white text-3xl mb-2 text-center lg:text-left">Reading Is Fun!</h1>
+            <p class="text-white text-lg lg:text-xl sm:text-xs text-center lg:text-left md:text-xl">
+                Manfaat blogging yang pertama adalah menyalurkan kreativitas yang dimiliki,
+                sekaligus menciptakan online presence di dunia yang serba digital ini. Blog bisa jadi sarana untukmu
+                menuangkan isi pikiran dan mencoba menulis tentang berbagai macam topik.
+            </p>
+        </div>
+    </div>
+</div>
 @endsection

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
@@ -8,6 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,4 +75,15 @@ Route::get('/dashboard', function(){
 })->middleware('auth');
 
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+Route::get('/dashboard/categories/checkSlug', [AdminCategoryController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show');
+
+Route::get('/dashboard/categories/{slug}/edit', [AdminCategoryController::class, 'edit'])->name('categories.edit');
+Route::put('/dashboard/categories/{category}', [AdminCategoryController::class, 'update'])->name('categories.update');
+
+Route::prefix('/users')->name('dashboard.users.')->group(function(){
+    Route::get('/', [UserController::class, 'index'])->name('home');
+    Route::delete('/{id}', [UserController::class, 'destroy'])->name('delete');
+});

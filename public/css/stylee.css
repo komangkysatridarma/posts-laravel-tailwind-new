@@ -1,0 +1,40 @@
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.pagination > * {
+    margin: 0 0.25rem;
+}
+.absolute.right-0 {
+    left: auto;
+    right: 0;
+  }
+  .sm .navbarMobile #mobile-menu {
+    top: 100%; /* Atur dropdown di bawah tombol mobile menu */
+}
+
+@media (max-width: 640px) {
+    .navbarMobile {
+      display: none;
+    }
+  }
+
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Tinggi maksimum kartu post */
+  }
+
+  .post-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .post-card-content {
+    flex-grow: 1; /* Konten akan memenuhi ruang tersisa */
+  }
+  .post-card-actions {
+    margin-top: auto; /* Memastikan posisi di bagian bawah */
+  }

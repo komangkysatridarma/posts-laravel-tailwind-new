@@ -91,7 +91,7 @@
         <label class="block text-gray-700 text-sm font-bold mb-2 @error('email') is-invalid @enderror" for="email">Email</label>
         <input class="shadow appearance-none border border-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('email') is-invalid @enderror" id="email" type="email" name="email" placeholder="Enter your email" value="{{ old('email') }}">
         @error('email')
-        <div class="invalid-feedback">
+        <div class="invalid-feedback text-red-900">
           {{ $message }}
         </div>
         @enderror

@@ -60,7 +60,7 @@
         <label class="block text-gray-700 text-sm font-bold mb-2 @error('name') is-invalid @enderror" for="name">Name</label>
         <input class="shadow appearance-none border border border-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('name') is-invalid @enderror" id="name" type="name" name="name" placeholder="Enter your name" value="{{ old('name') }}">
         @error('name')
-        <div class="invalid-feedback">
+        <div class="invalid-feedback text-red-900">
           {{ $message }}
         </div>
         @enderror
@@ -69,7 +69,7 @@
         <label class="block text-gray-700 text-sm font-bold mb-2 @error('username') is-invalid @enderror" for="username">Username</label>
         <input class="shadow appearance-none border border-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border @error('username') is-invalid @enderror" id="username" type="username" name="username" placeholder="Enter your username" value="{{ old('username') }}">
         @error('username')
-        <div class="invalid-feedback">
+        <div class="invalid-feedback text-red-900">
           {{ $message }}
         </div>
         @enderror
@@ -78,7 +78,7 @@
         <label class="block text-gray-700 text-sm font-bold mb-2 @error('email') is-invalid @enderror" for="email">Email</label>
         <input class="shadow appearance-none border border-orange-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('email') is-invalid @enderror" id="email" type="email" name="email" placeholder="Enter your email" value="{{ old('email') }}">
         @error('email')
-        <div class="invalid-feedback">
+        <div class="invalid-feedback text-red-800">
           {{ $message }}
         </div>
         @enderror
