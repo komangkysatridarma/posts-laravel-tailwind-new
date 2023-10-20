@@ -70,9 +70,5 @@
           </tr>
       </tbody>
   </table>
-
-  <script>
-    swal("hello world")
-  </script>
           
 @endsection
