@@ -3,7 +3,7 @@
 @section('container')
 
 
-<div class="mx-6 mt-6 mb-10 flex flex-col items-center">
+<div class="mx-auto max-w-lg mt-6 mb-6 flex flex-col items-center">
     <div class="flex flex-col items-center justify-center">
     <header class="bg-white p-4">
       <div class="container mx-auto">

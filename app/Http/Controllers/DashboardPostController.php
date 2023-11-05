@@ -44,6 +44,23 @@ class DashboardPostController extends Controller
             'body' => 'required'
         ]);
 
+        $forbiddenWords = ['kontol', 'memek', 'kntl', 'mmk', 'asu', 'pantek', 'bangsat', 'bgst', 'kanjut', 'bitch', 
+        'bego', 'cuki', 'cukimai', 'puqi', 'puki', 'pukima', 'hencet', 'henceut', 'ass', 'asshole',
+        'fuck', 'fucking', 'k0nt0l', 'dick', 'vagina', 'penis', 'mm3m3k', 'gigolo', 'lonte',
+        'nigga', 'pntk', 'hnct', 'k$ntl', 'm*m*k', 'd1ck', 'p3nis', 'p3n1s', 'tolol', 'tll', 'dongo',
+        'asw', 't0l0l', 'tol0l', 't0lol', 'titit', 't1t1t', 't1tit', 'tit1t', 'anj', 'd0ngo', 'dong0',
+        'd0ng0', 'ngentot', 'ngent', 'ebol', 'eb0l'];
+
+$input = strtolower($request->input('title') . ' ' . $request->input('body') . ' ' . $request->input('slug'));
+$input = preg_replace('/\s+/', ' ', $input); // Menghapus spasi berlebihan
+
+foreach ($forbiddenWords as $word) {
+    $pattern = '/\b' . preg_quote($word, '/') . '/i'; // Hilangkan '\b' pada kedua sisi
+    if (preg_match($pattern, $input)) {
+        return redirect()->back()->with('error', 'Input mengandung kata atau frasa terlarang.');
+    }
+}
+
         if($request->file('image')){
             $validatedData['image']= $request->file('image')->store('post-images');
         }
@@ -81,26 +98,52 @@ class DashboardPostController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Post $post)
-    {
-        $rules = [
-            'title' => 'required|max:255',
-            'category_id' => 'required',
-            'body' => 'required'
-        ];
+{
+    $rules = [
+        'title' => 'required|max:255',
+        'category_id' => 'required',
+        'image' => 'image|file|max:1024',
+        'body' => 'required'
+    ];
 
-        if($request->slug != $post->slug){
-            $rules['slug'] = 'required|unique:posts';
-        }
-
-        $validatedData = $request->validate($rules);
-
-        $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
-
-        Post::where('id', $post->id)->update($validatedData);
-
-        return redirect('/dashboard/posts')->with('success', 'Postingan telah di edit!');
+    if ($request->slug != $post->slug) {
+        $rules['slug'] = 'required|unique:posts';
     }
+
+    // Masukkan daftar kata-kata terlarang di sini
+    $forbiddenWords = ['kontol', 'memek', 'kntl', 'mmk', 'asu', 'pantek', 'bangsat', 'bgst', 'kanjut', 'bitch', 
+        'bego', 'cuki', 'cukimai', 'puqi', 'puki', 'pukima', 'hencet', 'henceut', 'ass', 'asshole',
+        'fuck', 'fucking', 'k0nt0l', 'dick', 'vagina', 'penis', 'mm3m3k', 'gigolo', 'lonte',
+        'nigga', 'pntk', 'hnct', 'k$ntl', 'm*m*k', 'd1ck', 'p3nis', 'p3n1s', 'tolol', 'tll', 'dongo',
+        'asw', 't0l0l', 'tol0l', 't0lol', 'titit', 't1t1t', 't1tit', 'tit1t', 'anj', 'd0ngo', 'dong0',
+        'd0ng0', 'ngentot', 'ngent', 'ebol', 'eb0l'];
+
+    $input = strtolower($request->input('title') . ' ' . $request->input('body') . ' ' . $request->input('slug'));
+    $input = preg_replace('/\s+/', ' ', $input); // Menghapus spasi berlebihan
+
+    foreach ($forbiddenWords as $word) {
+        $pattern = '/\b' . preg_quote($word, '/') . '\b/';
+        if (preg_match($pattern, $input)) {
+            return redirect()->back()->with('error', 'Input mengandung kata atau frasa terlarang.');
+        }
+    }
+
+    $validatedData = $request->validate($rules);
+
+    if ($request->file('image')) {
+        $imagePath = $request->file('image')->store('post-images');
+        $validatedData['image'] = $imagePath;
+    }
+
+    $validatedData['user_id'] = auth()->user()->id;
+    $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+
+    Post::where('id', $post->id)->update($validatedData);
+
+    return redirect('/dashboard/posts')->with('success', 'Postingan telah di edit!');
+}
+
+
 
     /**
      * Remove the specified resource from storage.

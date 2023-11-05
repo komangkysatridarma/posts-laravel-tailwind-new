@@ -7,11 +7,12 @@
     <meta name="description">
     <title>Wikrama Blog | Dashboard</title>
     <link rel="stylesheet" href="/css/trix.css">
+    <link rel="stylesheet" href="/css/stylee.css">
+    <link rel="icon" href="/img/logo.wk.png?color=indigo&shade=700">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     
@@ -25,6 +26,5 @@
   </div>
 </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
-  <script src="sweetalert2.all.min.js"></script>
-  <script src="/js/hapus.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </html>

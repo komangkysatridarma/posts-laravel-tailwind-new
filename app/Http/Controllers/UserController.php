@@ -4,15 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Post;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
+        if ($request->has('search_users')) {
+            $users = User::filter($request->only('search_users'))->get();
+        } else {
+            // Jika tidak ada parameter pencarian, ambil semua pengguna
+            $users = User::all();
+        }
+    
         return view('dashboard.users.index', compact('users'));
     }
 
@@ -54,10 +61,18 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    public function update(Request $request)
+{
+    $id = $request->input('id');
+    $user = User::find($id);
+
+    // Perbarui nilai isAdmin berdasarkan status checkbox
+    $user->isAdmin = $request->has('isAdmin');
+
+    // Simpan perubahan ke database
+    $user->save();
+    return redirect()->back()->with('success', 'Berhasil mengupdate user!');
+}
 
     /**
      * Remove the specified resource from storage.
@@ -65,7 +80,9 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::where('id',$id)->delete();
+        Post::where('user_id', $id)->delete();
 
         return redirect()->back()->with('deleted', 'Berhasil mengahpus data');
     }
+
 }

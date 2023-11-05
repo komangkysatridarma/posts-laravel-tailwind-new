@@ -85,5 +85,7 @@ Route::put('/dashboard/categories/{category}', [AdminCategoryController::class, 
 
 Route::prefix('/users')->name('dashboard.users.')->group(function(){
     Route::get('/', [UserController::class, 'index'])->name('home');
+    Route::get('/users', [UserController::class, 'index'])->name('index');
     Route::delete('/{id}', [UserController::class, 'destroy'])->name('delete');
+    Route::put('/update',[UserController::class, 'update'] )->name('update');
 });

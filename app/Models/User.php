@@ -26,6 +26,17 @@ class User extends Authenticatable
 
     protected $guarded = ['id'];
 
+    public function scopeFilter($query, array $filters)
+{
+    $query->when($filters['search_users'] ?? false, function ($query, $search) {
+        $query->where(function ($query) use ($search) {
+            $query->where('name', 'like', '%' . $search . '%')
+                ->orWhere('username', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%'); // Tambahkan ini untuk mencari berdasarkan email
+        });
+    });
+}
+
     /**
      * The attributes that should be hidden for serialization.
      *
