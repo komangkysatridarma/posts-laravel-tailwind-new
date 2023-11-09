@@ -89,3 +89,4 @@ Route::prefix('/users')->name('dashboard.users.')->group(function(){
     Route::delete('/{id}', [UserController::class, 'destroy'])->name('delete');
     Route::put('/update',[UserController::class, 'update'] )->name('update');
 });
+

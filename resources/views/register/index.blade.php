@@ -45,6 +45,7 @@
   </main>
     </div>
 </div> --}}
+
 <div class="flex items-center justify-center h-screen flex-wrap">
   <div class="flex lg:mb-60 max-w h-2/5 lg:mr-20 md:mb-40">
     <div class="max-w-[100%]"> <!-- Atur lebar sesuai kebutuhan -->
