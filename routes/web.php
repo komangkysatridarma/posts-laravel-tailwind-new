@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VerificationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,12 +68,30 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
+
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/dashboard', function(){
-    return view('dashboard.index');
-})->middleware('auth');
+Route::get('/email/verify', [VerificationController::class, 'notice'])
+    ->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
+    ->middleware(['auth', 'signed', 'throttle:6,1'])
+    ->name('verification.verify');
+
+Route::post('/email/verification-notification', [VerificationController::class, 'send'])
+    ->middleware(['auth', 'throttle:6,1'])
+    ->name('verification.send');
+
+// Route::get('/dashboard', function(){
+//     return view('dashboard.index');
+// })->middleware('auth');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function(){
+        return view('dashboard.index');
+    });
+});
 
 Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 Route::get('/dashboard/categories/checkSlug', [AdminCategoryController::class, 'checkSlug'])->middleware('auth');
@@ -88,5 +107,6 @@ Route::prefix('/users')->name('dashboard.users.')->group(function(){
     Route::get('/users', [UserController::class, 'index'])->name('index');
     Route::delete('/{id}', [UserController::class, 'destroy'])->name('delete');
     Route::put('/update',[UserController::class, 'update'] )->name('update');
+    Route::get('/export/excel',[UserController::class, 'exportExcel'] )->name('export');
 });
 

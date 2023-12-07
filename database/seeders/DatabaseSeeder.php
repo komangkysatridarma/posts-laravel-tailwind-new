@@ -16,14 +16,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(4)->create();
+        // User::factory(4)->create();
 
-        User::create([
-            'name'=> 'Komang Kysa Tri Darma',
-            'username'=> 'Komangg',
-            'email'=> 'komangkeyza17@gmail.com',
-            'password'=> bcrypt('komang')
-        ]);
+        // User::create([
+        //     'name'=> 'Komang Kysa Tri Darma',
+        //     'username'=> 'Komangg',
+        //     'email'=> 'komangkeyza17@gmail.com',
+        //     'password'=> bcrypt('komang')
+        // ]);
         // User::create([
         //     'name'=> 'Sen',
         //     'email'=> 'sen@gmail.com',
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
             'deskripsi'=> 'Olahraga adalah aktivitas fisik terencana dan terstruktur yang dilakukan untuk meningkatkan kebugaran fisik, kesehatan, dan kinerja fisik. Ini mencakup berbagai jenis aktivitas yang membangun kekuatan, daya tahan, kelincahan, fleksibilitas, dan koordinasi. Olahraga tidak hanya memberikan manfaat fisik, tetapi juga manfaat mental dan sosial. '
         ]);
 
-        Post::factory(20)->create();
+        // Post::factory(20)->create();
         // Post::create([
         //     'title'=>'Judul Pertama',
         //     'slug'=>'judul-pertama',

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportUser;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -21,6 +23,10 @@ class UserController extends Controller
         }
     
         return view('dashboard.users.index', compact('users'));
+    }
+
+    public function exportExcel(){
+        return Excel::download(new ExportUser, "user.xlsx");
     }
 
     /**
@@ -79,10 +85,15 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::where('id',$id)->delete();
-        Post::where('user_id', $id)->delete();
+        $user = User::find($id);
 
-        return redirect()->back()->with('deleted', 'Berhasil mengahpus data');
+    if ($user) {
+        $user->posts()->delete(); // Menghapus semua post yang terkait dengan user
+        $user->delete(); // Menghapus user itu sendiri
+        return redirect()->back()->with('success', 'Berhasil menghapus data');
     }
+
+    return redirect()->back()->with('error', 'User tidak ditemukan');
+}
 
 }

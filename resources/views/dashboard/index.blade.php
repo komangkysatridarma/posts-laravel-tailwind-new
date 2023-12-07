@@ -23,12 +23,7 @@
                             <p class="text-gray-700">{{ $post->excerpt}}</p>
                         </div>
                         <div class="flex items-center justify-between lg:p-4 sm:p-2">
-                            <button class="px-2 py-1 mb-1 md:px-4 md:py-2 lg:px-4 lg:py-2 text-sm md:text-base lg:text-lg bg-blue-500 text-white rounded hover:bg-blue-700">
-                                <a href="/dashboard/posts/{{ $post->slug }}" class="text-decoration-none">
-                                    Read More
-                                </a>
-                            </button>
-                            <span class="text-gray-600">Posted on {{ $post->created_at->diffForHumans() }}</span>
+                            <span class="text-gray-600 ml-4 mb-2">Posted on {{ $post->created_at->diffForHumans() }}</span>
                         </div>
                     </div>
                 </div>

@@ -23,4 +23,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         //
     }
+
+    protected $middlewareGroups = [
+        'web' => [
+            // ...
+            \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        ],
+    ];
+
+    protected $redirectTo = RouteServiceProvider::HOME;
 }

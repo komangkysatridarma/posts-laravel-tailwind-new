@@ -55,6 +55,19 @@
   </div>
   <div class="max-w-md w-full p-6 bg-white rounded-lg shadow-lg mb-52 lg:mb-40 md:mb-20 sm:mb-12">
     <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Register</h2>
+
+    @if(session()->has('error'))
+<div class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+  <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+  </svg>
+  <span class="sr-only">Info</span>
+  <div>
+    {{ session('error') }}
+  </div>
+</div>
+@endif
+
     <form action="/register" method="post">
       @csrf
       <div class="mb-4">
